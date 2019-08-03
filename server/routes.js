@@ -9,6 +9,7 @@ module.exports = (app) => {
   app.use('/', express.static(dist));
   
   require('./api/budget/budget.route')(app);
+  require('./api/category/category.route')(app);
   require('./api/expense/expense.route')(app);
 
   return app.get('*', (req, res) => res.sendFile(path.join(__dirname, `../${angularJson.projects['expenseManagement'].architect.build.options.outputPath}/index.html`)));

@@ -16,14 +16,24 @@ this.findOne = (query = {}) => {
 };
 
 this.findOneById = id => {
-  var query = { _id: id };
+  var query = {
+    _id: id
+  };
   return Budget.findOne(query)
 };
 
 this.updateBudget = (id, budget) => {
-  let promise = new Promise(async(rs, rj) => {
+  let promise = new Promise(async (rs, rj) => {
     try {
-      let result = await(Budget.findOneAndUpdate({_id: id}, {$set: {budget: budget.budget}}, {new: true}))
+      let result = await (Budget.findOneAndUpdate({
+        _id: id
+      }, {
+        $set: {
+          budget: budget.budget
+        }
+      }, {
+        new: true
+      }))
       return rs(result)
     } catch (err) {
       return rj(err)
