@@ -27,8 +27,6 @@ this.deleteCategory = _id => {
     try {
       let result = await (Category.findOneAndRemove({
         _id
-      }, {
-        new: true
       }))
       return rs(result)
     } catch (err) {

@@ -3,7 +3,7 @@ import { Observable, Subscription } from 'rxjs';
 import { Category } from '../../../../models/category.model';
 import { getCategories, AppState } from '../../../../store/app.states';
 import { Store } from '@ngrx/store';
-import { GetCategories } from '../../../../store/actions/category.action';
+import { GetCategories, OpenDeleteCategoryDialog } from '../../../../store/actions/category.action';
 
 @Component({
   selector: 'app-categories-list',
@@ -28,6 +28,10 @@ export class CategoriesListComponent implements OnInit, OnDestroy {
         this.categories = []
     })
     this.subscriptions.push(categoryStateDetail)
+  }
+
+  openDeleteCategoryDialog(category) {
+    this.store.dispatch(new OpenDeleteCategoryDialog(category))
   }
 
   ngOnDestroy() {

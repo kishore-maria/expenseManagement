@@ -5,14 +5,18 @@ import { map, switchMap, catchError } from 'rxjs/operators';
 import { Store } from '@ngrx/store';
 import { AppState } from '../app.states';
 import { MessageService } from '../../services/message.service';
-import { AddCategory, CategoryActionTypes, AddCategorySuccess, DeleteCategory, DeleteCategorySuccess, GetCategories, GetCategoriesSuccess } from '../actions/category.action';
+import { AddCategory, CategoryActionTypes, AddCategorySuccess, DeleteCategory, DeleteCategorySuccess, GetCategories, GetCategoriesSuccess, OpenDeleteCategoryDialog, SelectCategory, CloseDeleteCategoryDialog } from '../actions/category.action';
 import { Category } from '../../models/category.model';
 import { CategoryService } from '../../services/category.service';
+import { MatDialogRef, MatDialog } from '@angular/material';
+import { DeleteCategoryComponent } from '../../components/setting/components/delete-category/delete-category.component';
 
 @Injectable()
 export class CategoryEffects {
 
-  constructor(public actions: Actions, public store: Store<AppState>, public messageService: MessageService, public categoryService: CategoryService) {
+  categoryDeleteDialog: MatDialogRef<DeleteCategoryComponent>
+
+  constructor(public actions: Actions, public store: Store<AppState>, public messageService: MessageService, public categoryService: CategoryService, public dialog: MatDialog) {
   }
 
   @Effect()
@@ -22,9 +26,11 @@ export class CategoryEffects {
     switchMap((payload) => {
       return this.categoryService.deleteCategories(payload).pipe(
         map((result: Category) => {
-          console.log(result)
           let msg = "Category successfully deleted."
           this.messageService.showSuccess(msg)
+          if (this.categoryDeleteDialog) {
+            this.categoryDeleteDialog.close();
+          }
           return new DeleteCategorySuccess(result)
         }),
         catchError(error => {
@@ -69,6 +75,32 @@ export class CategoryEffects {
           return empty();
         })
       )
+    })
+  )
+
+  @Effect()
+  OpenDeleteCategoryDialog: Observable<any> = this.actions.pipe(
+    ofType(CategoryActionTypes.OPEN_DELETE_CATEGORY_DIALOG),
+    map((action: OpenDeleteCategoryDialog) => action.payload),
+    switchMap((payload: Category) => {
+      if (this.categoryDeleteDialog) {
+        this.categoryDeleteDialog.close();
+      }
+      this.categoryDeleteDialog = this.dialog.open(DeleteCategoryComponent);
+      this.store.dispatch(new SelectCategory(payload))
+      return empty()
+    })
+  )
+
+  @Effect()
+  CloseDeleteCategoryDialog: Observable<any> = this.actions.pipe(
+    ofType(CategoryActionTypes.CLOSE_DELETE_CATEGORY_DIALOG),
+    map((action: CloseDeleteCategoryDialog) => action),
+    switchMap(() => {
+      if (this.categoryDeleteDialog) {
+        this.categoryDeleteDialog.close();
+      }
+      return empty()
     })
   )
 

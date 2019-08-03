@@ -21,6 +21,7 @@ import { BudgetEffects } from './store/effects/budget.effects';
 import { MatDialogModule, MatSnackBarModule, MAT_SNACK_BAR_DEFAULT_OPTIONS } from '@angular/material';
 import { CategoryEffects } from './store/effects/category.effects';
 import { CategoriesListComponent } from './components/setting/components/categories-list/categories-list.component';
+import { DeleteCategoryComponent } from './components/setting/components/delete-category/delete-category.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { CategoriesListComponent } from './components/setting/components/categor
     SettingComponent,
     SidebarComponent,
     CategoriesListComponent,
+    DeleteCategoryComponent,
   ],
   imports: [
     BrowserModule,
@@ -45,18 +47,22 @@ import { CategoriesListComponent } from './components/setting/components/categor
     MatSnackBarModule,
     AlertModule.forRoot(),
     BrowserAnimationsModule,
-    MatIconModule
+    MatIconModule,
   ],
   providers: [
     { provide: MAT_SNACK_BAR_DEFAULT_OPTIONS, useValue: { duration: 2500 } }
   ],
   bootstrap: [AppComponent],
   exports: [
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    DeleteCategoryComponent
   ],
   schemas: [
     CUSTOM_ELEMENTS_SCHEMA,
     NO_ERRORS_SCHEMA
+  ],
+  entryComponents: [
+    DeleteCategoryComponent,
   ]
 })
 export class AppModule { }

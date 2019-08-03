@@ -1,6 +1,6 @@
 <div *ngFor="let category of categories">
   {{category.name}}
-  <!-- <i class="material-icons">
+  <i class="material-icons" (click)="openDeleteCategoryDialog(category)">
     delete
-  </i> -->
+  </i>
 </div>
