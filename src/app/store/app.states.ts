@@ -28,5 +28,9 @@ export const getBudget = (state: AppState): Budget => _getBudget(state.budgetSta
 
 const _getCategories = (state: category.State): Category[] => state.categories;
 
+const _getCategory = (state: category.State): Category => state.category;
+
 
 export const getCategories = (state: AppState): Category[] => _getCategories(state.categoryState);
+
+export const getCategory = (state: AppState): Category => _getCategory(state.categoryState);
