@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AlertModule } from 'ngx-bootstrap';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatIconModule } from '@angular/material/icon'
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -18,12 +19,15 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BudgetEffects } from './store/effects/budget.effects';
 import { MatDialogModule, MatSnackBarModule, MAT_SNACK_BAR_DEFAULT_OPTIONS } from '@angular/material';
+import { CategoryEffects } from './store/effects/category.effects';
+import { CategoriesListComponent } from './components/setting/components/categories-list/categories-list.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     SettingComponent,
     SidebarComponent,
+    CategoriesListComponent,
   ],
   imports: [
     BrowserModule,
@@ -31,7 +35,7 @@ import { MatDialogModule, MatSnackBarModule, MAT_SNACK_BAR_DEFAULT_OPTIONS } fro
     FormsModule,
     ReactiveFormsModule,
     StoreModule.forRoot(reducers, {}),
-    EffectsModule.forRoot([ ExpenseEffects, BudgetEffects ]),
+    EffectsModule.forRoot([ExpenseEffects, BudgetEffects, CategoryEffects]),
     StoreDevtoolsModule.instrument({
       maxAge: 25, // Retains last 25 states
       logOnly: environment.production, // Restrict extension to log-only mode
@@ -40,7 +44,8 @@ import { MatDialogModule, MatSnackBarModule, MAT_SNACK_BAR_DEFAULT_OPTIONS } fro
     MatDialogModule,
     MatSnackBarModule,
     AlertModule.forRoot(),
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatIconModule
   ],
   providers: [
     { provide: MAT_SNACK_BAR_DEFAULT_OPTIONS, useValue: { duration: 2500 } }

@@ -2,23 +2,60 @@
   <div class="setting">
     <div class="setting-detail">
       <app-sidebar class="setting-sidebar"></app-sidebar>
-      <div class="setting-container">
+      <div class="setting-container col-lg-12 col-md-12 col-sm-12">
         <div class="row justify-content-center">
-          <div class="col-12 col-lg-auto setting-find">Total budget </div>
-            <div class="col-12 col-lg-auto setting-my-campaings">
-              <input type="text" [(ngModel)]="budget.budget" placeholder="20000" />
+          <div class="col-lg-12 col-md-6 col-sm-6 inputs">
+            <div>
+              <label for="">Total budget</label>
             </div>
-            <div class="col-lg-3">
-              <div class="row justify-content-center">
-                <div class="col-8 col-lg-12 setting-buttons_center">
-                  <button mat-button (click)="setBudget(budget)" class="action-btn setting-buttons__buttons">
-                    Update
-                  </button>
-                </div>
-              </div>
+            <div>
+              <input type="text" [(ngModel)]="budget.budget" placeholder="2000000" />
+            </div>
+            <div>
+              <button mat-button (click)="setBudget(budget)" class="action-btn setting-buttons__buttons">
+                Update
+              </button>
             </div>
           </div>
+          <div class="col-lg-12 col-md-6 col-sm-6 inputs">
+            <div>
+              <label for="">Categories</label>
+            </div>
+            <div>
+              <input type="text" [(ngModel)]="category.name" placeholder="Category name here" />
+            </div>
+            <div>
+              <button mat-button (click)="addCategory(category)" class="action-btn setting-buttons__buttons">
+                Add
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-2 list">
+            <app-categories-list></app-categories-list>
+          </div>
+        </div>
       </div>
+      <!-- <div class='item-header'>
+          <div class='name'>CAMPAIGN NAME</div>
+          <div class='date-created'>DATE CREATED</div>
+          <div class='duration'>CAMPAIGN DURATION</div>
+          <div class='status'>STATUS</div>
+          <div class='actions'> </div>
+        </div>
+
+        <div class='item'  (window:scroll)="onWindowScroll($event)">
+          <div *ngFor="let item of campaignList"> -->
+      <!-- <app-campaign-item [item]="item" (campaignStat)="campaignInfo($event)">
+            </app-campaign-item> -->
+      <!-- </div>
+            </div> -->
+
+      <!-- <div class="setting-container col-lg-12 col-md-12 col-sm-12">
+        <div class="row justify-content-center inputs">
+        </div>
+      </div> -->
     </div>
   </div>
 </div>

@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { Actions, Effect, ofType } from '@ngrx/effects';
 import { Observable, empty } from 'rxjs';
 import { map, switchMap, catchError } from 'rxjs/operators';
-import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { AppState } from '../app.states';
 import { BudgetActionTypes, UpdateBudget, UpdateBudgetSuccess, GetBudget } from '../actions/budget.action';
@@ -13,7 +12,7 @@ import { MessageService } from '../../services/message.service';
 @Injectable()
 export class BudgetEffects {
 
-  constructor(public router: Router, public actions: Actions, public store: Store<AppState>, public budgetService: BudgetService, public messageService: MessageService) {
+  constructor(public actions: Actions, public store: Store<AppState>, public budgetService: BudgetService, public messageService: MessageService) {
   }
 
   // @Effect()

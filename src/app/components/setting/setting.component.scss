@@ -17,11 +17,12 @@
   display: flex;
   justify-content: space-between;
   position: relative;
-  min-height: calc(100vh - 68px);
+  min-height: calc(100vh - 0px);
   // padding: 67px 0 0;
 }
 .setting-container {
   padding-top: 30px;
+  padding-left: 10%;
   display: flex;
   flex-direction: column;
   flex-grow: 1;
@@ -72,4 +73,27 @@
   &_center {
     text-align: center;
   }
+}
+.inputs {
+  padding: 10px;
+  position: relative;
+  div {
+    position: relative;
+    width: 15%;
+    float: left;
+    display: block;
+    input {
+      position: relative;
+      top: 6px;
+    }
+    label {
+      position: relative;
+      top: 7px;
+    }
+  }
+}
+
+.list {
+  position: relative;
+  border: 1px solid;
 }

@@ -17,11 +17,11 @@ module.exports = (app) => {
 this.setBudget = async (req, res) => {
   let budget = req.body
   try {
-    let existBudget = await(BudgetService.findOne())
+    let existBudget = await (BudgetService.findOne())
     if (existBudget)
-      var result = await(BudgetService.updateBudget(existBudget._id, budget))
+      var result = await (BudgetService.updateBudget(existBudget._id, budget))
     else
-      var result = await(BudgetService.createBudget(budget))
+      var result = await (BudgetService.createBudget(budget))
     return res.send(result);
   } catch (err) {
     return res.status(400).send(err);
@@ -30,7 +30,7 @@ this.setBudget = async (req, res) => {
 
 this.getBudget = async (req, res) => {
   try {
-    let result = await(BudgetService.findOne())
+    let result = await (BudgetService.findOne())
     return res.send(result);
   } catch (err) {
     return res.status(400).send(err);
