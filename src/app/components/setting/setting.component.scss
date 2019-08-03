@@ -1,0 +1,75 @@
+@import "../../../var.scss";
+
+.setting-wrapper {
+  position: relative;
+  overflow: hidden;
+}
+.setting {
+  font-family: $font;
+  color: $black;
+  &-container {
+    padding-left: 18px;
+    padding-right: 12px;
+  }
+  overflow: hidden;
+}
+.setting-detail {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  min-height: calc(100vh - 68px);
+  // padding: 67px 0 0;
+}
+.setting-container {
+  padding-top: 30px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  position: relative;
+  background-color: #f0f1f1;
+  -webkit-transition: all 1s cubic-bezier(0.18, 0.89, 0.32, 1.28);
+  -moz-transition: all 1s cubic-bezier(0.18, 0.89, 0.32, 1.28);
+  -o-transition: all 1s cubic-bezier(0.18, 0.89, 0.32, 1.28);
+  transition: all 1s cubic-bezier(0.18, 0.89, 0.32, 1.28);
+}
+.setting-find {
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 22px;
+  color: #848484;
+}
+.setting-my-campaings {
+  color: $green;
+  padding-left: 0;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 22px;
+}
+.setting-buttons {
+  margin-top: 39px;
+  margin-bottom: 53px;
+  button.action-btn {
+    background-color: $green;
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 15px;
+    line-height: 18px;
+    letter-spacing: 0.06em;
+    color: $white;
+  }
+  &__buttons {
+    padding-right: 0;
+    padding-left: 0;
+    max-width: 244px;
+    min-width: max-content;
+    width: 100%;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.16);
+  }
+  &_center {
+    text-align: center;
+  }
+}

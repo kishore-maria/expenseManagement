@@ -1,0 +1,13 @@
+{
+  "server": {
+    "port": 4005,
+    "context": ""
+  },
+  "mongo": {
+    "host": "127.0.0.1:27017/expenseManagement",
+    "applicationDB": "local"
+  },
+  "apiUrl": "/api/",
+  "tmp": "/tmp/",
+  "baseURL": "http://127.0.0.1:4200"
+}
