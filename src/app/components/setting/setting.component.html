@@ -1,0 +1,24 @@
+<div class="setting-wrapper">
+  <div class="setting">
+    <div class="setting-detail">
+      <app-sidebar class="setting-sidebar"></app-sidebar>
+      <div class="setting-container">
+        <div class="row justify-content-center">
+          <div class="col-12 col-lg-auto setting-find">Total budget </div>
+            <div class="col-12 col-lg-auto setting-my-campaings">
+              <input type="text" [(ngModel)]="budget.budget" placeholder="20000" />
+            </div>
+            <div class="col-lg-3">
+              <div class="row justify-content-center">
+                <div class="col-8 col-lg-12 setting-buttons_center">
+                  <button mat-button (click)="setBudget(budget)" class="action-btn setting-buttons__buttons">
+                    Update
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>

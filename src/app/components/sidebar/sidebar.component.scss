@@ -1,0 +1,28 @@
+@import "../../../var.scss";
+
+
+.mat-list-item {
+  font-family: $font;
+  font-weight: 500;
+}
+
+.sidebar {
+  padding-top: 30px;
+  width: 235px;
+  font-family: $font;
+
+  &__button {
+    margin-bottom: 31px;
+  }
+
+  &__item {
+    font-weight: 500;
+    font-size: 18px;
+    color: $green;
+    cursor: pointer;
+    &:hover {
+      background-color: #D4E7EA;
+      color: #06414D;;
+    }
+  }
+}
