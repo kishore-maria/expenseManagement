@@ -4,6 +4,8 @@ const index = `${Config.server.context}/api/expense`;
 
 const ExpenseService = require('./expense.service')
 
+const Budget = require('../budget/budget.schema')
+
 const join = link => index + (link != null ? link : '');
 
 module.exports = (app) => {
@@ -44,6 +46,9 @@ this.getExpense = async (req, res) => {
 this.addExpense = async (req, res) => {
   let expense = req.body
   try {
+    let budget = await(Budget.find())
+    if (budget.length <=0)
+      return res.status(400).send('Please add the budget in settings page.');
     let result = await (ExpenseService.create(expense))
     return res.send(result);
   } catch (err) {
@@ -54,6 +59,9 @@ this.addExpense = async (req, res) => {
 this.updateExpense = async (req, res) => {
   let expense = req.body
   try {
+    let budget = await(Budget.find())
+    if (budget.length <=0)
+      return res.status(400).send('Please add the budget in settings page.');
     let result = await (ExpenseService.update(expense._id, expense))
     return res.send(result);
   } catch (err) {

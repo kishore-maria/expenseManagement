@@ -7,7 +7,10 @@ var paginate  = require('mongoose-paginate');
 var DB_NAME   = 'budget';
 
 var fields = {
-  budget: Number
+  budget: {
+    type: Number,
+    default: 0
+  }
 };
 
 var collection =
