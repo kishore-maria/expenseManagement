@@ -90,14 +90,17 @@ export class AddExpenseFormComponent implements OnInit, OnDestroy {
   validate() {
     if (this.expense && this.expense._id)
       var expenseId = this.expense._id
-    this.expense = {
+    let expense = {
       _id: expenseId,
       name: this.expenseAddForm.controls.name.value,
       category: this.expenseAddForm.controls.category.value,
       amount: this.expenseAddForm.controls.amount.value,
       date: this.expenseAddForm.controls.date.value,
     }
-    return !this.expense.name || !this.expense.category || !this.expense.amount || !this.expense.date
+    if (!expense.name || !expense.category || !expense.amount || !expense.date)
+      return true
+    this.expense = expense
+    return false
   }
 
   ngOnDestroy() {

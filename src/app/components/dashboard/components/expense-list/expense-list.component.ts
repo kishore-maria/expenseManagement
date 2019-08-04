@@ -37,6 +37,7 @@ export class ExpenseListComponent implements OnInit, OnDestroy {
           expense.date = moment(expense.date).format('DD MMM, YYYY')
         })
         this.dataSource.data = expenses;
+        this.expenses = expenses
       } else
         this.expenses = expenses
     })
