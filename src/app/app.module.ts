@@ -57,6 +57,7 @@ import { DeleteCategoryComponent } from './components/setting/components/delete-
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { ExpenseListComponent } from './components/dashboard/components/expense-list/expense-list.component';
 import { AddExpenseFormComponent } from './components/dashboard/components/add-expense-form/add-expense-form.component';
+import { SideBarEffects } from './store/effects/sideBar.effects';
 
 @NgModule({
   declarations: [
@@ -75,7 +76,7 @@ import { AddExpenseFormComponent } from './components/dashboard/components/add-e
     FormsModule,
     ReactiveFormsModule,
     StoreModule.forRoot(reducers, {}),
-    EffectsModule.forRoot([ExpenseEffects, BudgetEffects, CategoryEffects]),
+    EffectsModule.forRoot([ExpenseEffects, BudgetEffects, CategoryEffects, SideBarEffects]),
     StoreDevtoolsModule.instrument({
       maxAge: 25, // Retains last 25 states
       logOnly: environment.production, // Restrict extension to log-only mode
@@ -130,7 +131,7 @@ import { AddExpenseFormComponent } from './components/dashboard/components/add-e
   ],
   entryComponents: [
     DeleteCategoryComponent,
-    AddExpenseFormComponent
+    AddExpenseFormComponent,
   ]
 })
 export class AppModule { }

@@ -19,4 +19,8 @@ export class BudgetService {
     return this.http.get(`${this.BASE_URL}`)
   }
 
+  getBudgetOverview() {
+    return this.http.get(`/api/budgetOverview`)
+  }
+
 }

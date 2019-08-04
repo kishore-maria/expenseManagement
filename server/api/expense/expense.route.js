@@ -12,9 +12,13 @@ module.exports = (app) => {
 
   app.put(join("/"), this.updateExpense);
 
+  app.put(join("/undo"), this.undoDeleteExpense);
+
   app.get(join("/"), this.getExpenses);
 
   app.get(join("/:id"), this.getExpense);
+
+  app.delete(join("/:id"), this.deleteExpense);
 
 };
 
@@ -57,3 +61,29 @@ this.updateExpense = async (req, res) => {
   }
 };
 
+this.deleteExpense = async (req, res) => {
+  let expenseId = req.params.id
+  let expense = {
+    status: "DELETED"
+  }
+  try {
+    let result = await (ExpenseService.update(expenseId, expense))
+    return res.send(result);
+  } catch (err) {
+    return res.status(400).send(err);
+  }
+};
+
+this.undoDeleteExpense = async (req, res) => {00
+  let expenseId = req.body._id
+  let expense = {
+    status: "ADDED"
+  }
+  try {
+    let result = await (ExpenseService.update(expenseId, expense))
+    return res.send(result);
+  } catch (err) {
+    console.log(err)
+    return res.status(400).send(err);
+  }
+};

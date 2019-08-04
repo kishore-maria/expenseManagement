@@ -7,6 +7,9 @@ export enum ExpenseActionTypes {
   ADD_EXPENSE_SUCCESS = '[Expense] Add expense successfully.',
   UPDATE_EXPENSE = '[Expense] Update expense.',
   UPDATE_EXPENSE_SUCCESS = '[Expense] Update expense successfully.',
+  UNDO_DELETE_EXPENSE = '[Expense] Undo delete expense.',
+  DELETE_EXPENSE = '[Expense] Delete expense.',
+  DELETE_EXPENSE_SUCCESS = '[Expense] Delete expense successfully.',
   SELECT_EXPENSE = '[Expense] Select expense.',
   SELECT_EXPENSE_SUCCESS = '[Expense] Select expense success.',
   OPEN_ADD_EXPENSE_DIALOG = '[Expense] Open add expense form.',
@@ -27,6 +30,12 @@ export class AddExpenseSuccess implements Action {
   }
 }
 
+export class UndoDeleteExpense implements Action {
+  readonly type = ExpenseActionTypes.UNDO_DELETE_EXPENSE;
+  constructor(public payload: Expense) {
+  }
+}
+
 export class UpdateExpense implements Action {
   readonly type = ExpenseActionTypes.UPDATE_EXPENSE;
   constructor(public payload: Expense) {
@@ -35,6 +44,18 @@ export class UpdateExpense implements Action {
 
 export class UpdateExpenseSuccess implements Action {
   readonly type = ExpenseActionTypes.UPDATE_EXPENSE_SUCCESS;
+  constructor(public payload: Expense) {
+  }
+}
+
+export class DeleteExpense implements Action {
+  readonly type = ExpenseActionTypes.DELETE_EXPENSE;
+  constructor(public payload: Expense) {
+  }
+}
+
+export class DeleteExpenseSuccess implements Action {
+  readonly type = ExpenseActionTypes.DELETE_EXPENSE_SUCCESS;
   constructor(public payload: Expense) {
   }
 }
@@ -75,4 +96,4 @@ export class CloseAddExpenseDialog implements Action {
   }
 }
 
-export type All = AddExpense | AddExpenseSuccess | OpenAddExpenseDialog | CloseAddExpenseDialog | SelectExpense | GetExpenses | GetExpensesSuccess | SelectExpenseSuccess | UpdateExpense | UpdateExpenseSuccess;
+export type All = AddExpense | AddExpenseSuccess | OpenAddExpenseDialog | CloseAddExpenseDialog | SelectExpense | GetExpenses | GetExpensesSuccess | SelectExpenseSuccess | UpdateExpense | UpdateExpenseSuccess | DeleteExpense | DeleteExpenseSuccess | UndoDeleteExpense;

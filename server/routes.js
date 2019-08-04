@@ -9,6 +9,7 @@ module.exports = (app) => {
   app.use('/', express.static(dist));
   
   require('./api/budget/budget.route')(app);
+  require('./api/budgetOverview/budgetOverview.route')(app);
   require('./api/category/category.route')(app);
   require('./api/expense/expense.route')(app);
 

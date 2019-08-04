@@ -8,7 +8,7 @@
 
 .sidebar {
   padding-top: 30px;
-  width: 235px;
+  // width: 235px;
   font-family: $font;
 
   &__button {
@@ -20,9 +20,16 @@
     font-size: 18px;
     color: $green;
     cursor: pointer;
+
     &:hover {
       background-color: #D4E7EA;
-      color: #06414D;;
+      color: #06414D;
+      ;
     }
   }
+}
+
+.active {
+  background-color: #328492;
+  color: #ffffff;
 }

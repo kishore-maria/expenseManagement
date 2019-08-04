@@ -26,4 +26,12 @@ export class ExpenseService {
     return this.http.put(`${this.BASE_URL}`, expense)
   }
 
+  deleteExpense(expense) {
+    return this.http.delete(`${this.BASE_URL}/${expense._id}`)
+  }
+
+  undoDeleteExpense(expense) {
+    return this.http.put(`${this.BASE_URL}/undo`, expense)
+  }
+
 }

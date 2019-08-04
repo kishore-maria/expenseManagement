@@ -22,7 +22,8 @@ export function reducer(state = initialState, action: All): State {
     case ExpenseActionTypes.ADD_EXPENSE_SUCCESS: {
       return {
         ...state,
-        expenses: [...state.expenses, action.payload]
+        expenses: [...state.expenses, action.payload],
+        expense: action.payload
       };
     }
     case ExpenseActionTypes.UPDATE_EXPENSE: {
@@ -31,6 +32,29 @@ export function reducer(state = initialState, action: All): State {
       };
     }
     case ExpenseActionTypes.UPDATE_EXPENSE_SUCCESS: {
+      return {
+        ...state,
+        expenses: state.expenses.map(
+          expense => { 
+            if(expense._id === action.payload._id) {
+              return action.payload;
+            }
+            return expense
+          }
+        )
+      };
+    }
+    case ExpenseActionTypes.UNDO_DELETE_EXPENSE: {
+      return {
+        ...state,
+      };
+    }
+    case ExpenseActionTypes.DELETE_EXPENSE: {
+      return {
+        ...state,
+      };
+    }
+    case ExpenseActionTypes.DELETE_EXPENSE_SUCCESS: {
       return {
         ...state,
         expenses: state.expenses.map(

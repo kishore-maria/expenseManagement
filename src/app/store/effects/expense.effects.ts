@@ -5,11 +5,12 @@ import { map, switchMap, catchError } from 'rxjs/operators';
 import { Store } from '@ngrx/store';
 import { MatDialogRef, MatDialog } from '@angular/material';
 import { AppState } from '../app.states';
-import { ExpenseActionTypes, AddExpense, AddExpenseSuccess, OpenAddExpenseDialog, GetExpenses, GetExpensesSuccess, SelectExpense, SelectExpenseSuccess, UpdateExpense, UpdateExpenseSuccess } from '../actions/expense.action';
+import { ExpenseActionTypes, AddExpense, AddExpenseSuccess, OpenAddExpenseDialog, GetExpenses, GetExpensesSuccess, SelectExpense, SelectExpenseSuccess, UpdateExpense, UpdateExpenseSuccess, DeleteExpense, DeleteExpenseSuccess, UndoDeleteExpense, CloseAddExpenseDialog } from '../actions/expense.action';
 import { ExpenseService } from '../../services/expense.service';
 import { AddExpenseFormComponent } from '../../components/dashboard/components/add-expense-form/add-expense-form.component';
 import { Expense } from 'src/app/models/expense.model';
 import { MessageService } from 'src/app/services/message.service';
+import { GetBudgetOverview } from '../actions/budget.action';
 
 @Injectable()
 export class ExpenseEffects {
@@ -28,12 +29,12 @@ export class ExpenseEffects {
         map((result: Expense) => {
           let msg = "Expense added successfully."
           this.messageService.showSuccess(msg)
+          this.store.dispatch(new GetBudgetOverview)
           return new AddExpenseSuccess(result)
         }),
         catchError(error => {
-          let messages = []
-          messages.push(error.error)
-          // this.messageService.showError(messages)
+          let msg = error.error
+          this.messageService.showError(msg)
           return empty();
         })
       )
@@ -69,9 +70,8 @@ export class ExpenseEffects {
           return new SelectExpenseSuccess(result)
         }),
         catchError(error => {
-          let messages = []
-          messages.push(error.error)
-          this.messageService.showError(messages)
+          let msg = error.error
+          this.messageService.showError(msg)
           return empty();
         })
       )
@@ -91,18 +91,67 @@ export class ExpenseEffects {
   )
 
   @Effect()
+  CloseAddExpenseDialog: Observable<any> = this.actions.pipe(
+    ofType(ExpenseActionTypes.CLOSE_ADD_EXPENSE_DIALOG),
+    map((action: CloseAddExpenseDialog) => action),
+    switchMap(() => {
+      if (this.expenseAddFormRef)
+        this.expenseAddFormRef.close()
+      return empty();
+    })
+  )
+
+  @Effect()
   UpdateExpense: Observable<any> = this.actions.pipe(
     ofType(ExpenseActionTypes.UPDATE_EXPENSE),
     map((action: UpdateExpense) => action.payload),
     switchMap((payload) => {
       return this.expenseService.updateExpense(payload).pipe(
         map((result: Expense) => {
+          this.store.dispatch(new GetBudgetOverview)
           return new UpdateExpenseSuccess(result)
         }),
         catchError(error => {
-          let messages = []
-          messages.push(error.error)
-          // this.messageService.showError(messages)
+          let msg = error.error
+          this.messageService.showError(msg)
+          return empty();
+        })
+      )
+    })
+  )
+
+  @Effect()
+  DeleteExpense: Observable<any> = this.actions.pipe(
+    ofType(ExpenseActionTypes.DELETE_EXPENSE),
+    map((action: DeleteExpense) => action.payload),
+    switchMap((payload) => {
+      return this.expenseService.deleteExpense(payload).pipe(
+        map((result: Expense) => {
+          this.store.dispatch(new GetBudgetOverview)
+          return new DeleteExpenseSuccess(result)
+        }),
+        catchError(error => {
+          let msg = error.error
+          this.messageService.showError(msg)
+          return empty();
+        })
+      )
+    })
+  )
+
+  @Effect()
+  UndoDeleteExpense: Observable<any> = this.actions.pipe(
+    ofType(ExpenseActionTypes.UNDO_DELETE_EXPENSE),
+    map((action: UndoDeleteExpense) => action.payload),
+    switchMap((payload) => {
+      return this.expenseService.undoDeleteExpense(payload).pipe(
+        map((result: Expense) => {
+          this.store.dispatch(new GetBudgetOverview)
+          return new UpdateExpenseSuccess(result)
+        }),
+        catchError(error => {
+          let msg = error.error
+          this.messageService.showError(msg)
           return empty();
         })
       )

@@ -11,7 +11,10 @@ var fields = {
   name: String,
   amount: Number,
   date: Date,
-  status: String // ADDED || DELETED
+  status: { // ADDED || DELETED
+    type: String,
+    default: "ADDED"
+  }
 };
 
 var collection =

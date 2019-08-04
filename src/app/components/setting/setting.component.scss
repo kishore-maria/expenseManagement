@@ -22,7 +22,7 @@
 }
 .setting-container {
   padding-top: 30px;
-  padding-left: 10%;
+  padding-left: 20%;
   display: flex;
   flex-direction: column;
   flex-grow: 1;
@@ -79,7 +79,7 @@
   position: relative;
   div {
     position: relative;
-    width: 15%;
+    width: 30%;
     float: left;
     display: block;
     input {
@@ -96,4 +96,6 @@
 .list {
   position: relative;
   border: 1px solid;
+  height: 100%;
+  overflow: auto;
 }

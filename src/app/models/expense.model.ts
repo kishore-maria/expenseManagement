@@ -3,5 +3,5 @@ export interface Expense {
     category: String;
     name: String;
     amount: Number;
-    date: Date;
+    date: any;
 }
