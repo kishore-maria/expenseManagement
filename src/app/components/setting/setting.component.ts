@@ -18,6 +18,8 @@ export class SettingComponent implements OnInit, OnDestroy {
 
   category: Category;
 
+  categories: Category[]
+
   subscriptions: Subscription[] = [];
 
   constructor(public store: Store<AppState>) { }
@@ -38,8 +40,12 @@ export class SettingComponent implements OnInit, OnDestroy {
     let categoryState: Observable<Category[]> = this.store.select(getCategories)
     let categoryStateDetail = categoryState.subscribe(categories => {
       this.category = {
-        name : null
+        name: null
       }
+      if (categories)
+        this.categories = categories
+      else
+        this.categories = []
     })
     this.subscriptions.push(categoryStateDetail)
     this.category = {

@@ -4,21 +4,14 @@ var Promise   = require("bluebird");
 var timestamps = require('mongoose-timestamp');
 var paginate  = require('mongoose-paginate');
 
-var DB_NAME   = 'expenseData';
+var DB_NAME   = 'expense';
 
 var fields = {
-  category: [
-    {
-      name: String
-    }
-  ],
-  expense: {
-    category: String,
-    itemName: String,
-    cost: Number,
-    date: Date,
-  },
-  budget: Number
+  category: String,
+  name: String,
+  amount: Number,
+  date: Date,
+  status: String // ADDED || DELETED
 };
 
 var collection =

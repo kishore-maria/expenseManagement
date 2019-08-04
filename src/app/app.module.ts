@@ -3,6 +3,38 @@ import { NgModule } from '@angular/core';
 import { AlertModule } from 'ngx-bootstrap';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatIconModule } from '@angular/material/icon'
+import { MatInputModule, MatNativeDateModule } from '@angular/material'
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatSelectModule } from '@angular/material/select';
+import {
+  MatAutocompleteModule,
+  MatButtonModule,
+  MatButtonToggleModule,
+  MatCardModule,
+  MatCheckboxModule,
+  MatChipsModule,
+  MatExpansionModule,
+  MatGridListModule,
+  MatListModule,
+  MatMenuModule,
+  MatPaginatorModule,
+  MatProgressBarModule,
+  MatProgressSpinnerModule,
+  MatRadioModule,
+  MatRippleModule,
+  MatSidenavModule,
+  MatSliderModule,
+  MatSlideToggleModule,
+  MatSortModule,
+  MatTableModule,
+  MatTabsModule,
+  MatToolbarModule,
+  MatTooltipModule,
+  MatStepperModule
+} from '@angular/material';
+
+import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -22,6 +54,9 @@ import { MatDialogModule, MatSnackBarModule, MAT_SNACK_BAR_DEFAULT_OPTIONS } fro
 import { CategoryEffects } from './store/effects/category.effects';
 import { CategoriesListComponent } from './components/setting/components/categories-list/categories-list.component';
 import { DeleteCategoryComponent } from './components/setting/components/delete-category/delete-category.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { ExpenseListComponent } from './components/dashboard/components/expense-list/expense-list.component';
+import { AddExpenseFormComponent } from './components/dashboard/components/add-expense-form/add-expense-form.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +65,9 @@ import { DeleteCategoryComponent } from './components/setting/components/delete-
     SidebarComponent,
     CategoriesListComponent,
     DeleteCategoryComponent,
+    DashboardComponent,
+    ExpenseListComponent,
+    AddExpenseFormComponent,
   ],
   imports: [
     BrowserModule,
@@ -48,6 +86,35 @@ import { DeleteCategoryComponent } from './components/setting/components/delete-
     AlertModule.forRoot(),
     BrowserAnimationsModule,
     MatIconModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatSelectModule,
+    MatAutocompleteModule,
+    MatButtonModule,
+    MatButtonToggleModule,
+    MatCardModule,
+    MatCheckboxModule,
+    MatChipsModule,
+    MatExpansionModule,
+    MatGridListModule,
+    MatListModule,
+    MatMenuModule,
+    MatPaginatorModule,
+    MatProgressBarModule,
+    MatProgressSpinnerModule,
+    MatRadioModule,
+    MatRippleModule,
+    MatSidenavModule,
+    MatSliderModule,
+    MatSlideToggleModule,
+    MatSortModule,
+    MatTableModule,
+    MatTabsModule,
+    MatToolbarModule,
+    MatTooltipModule,
+    MatStepperModule
   ],
   providers: [
     { provide: MAT_SNACK_BAR_DEFAULT_OPTIONS, useValue: { duration: 2500 } }
@@ -63,6 +130,7 @@ import { DeleteCategoryComponent } from './components/setting/components/delete-
   ],
   entryComponents: [
     DeleteCategoryComponent,
+    AddExpenseFormComponent
   ]
 })
 export class AppModule { }

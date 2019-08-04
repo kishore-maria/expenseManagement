@@ -83,9 +83,8 @@ export class CategoryEffects {
     ofType(CategoryActionTypes.OPEN_DELETE_CATEGORY_DIALOG),
     map((action: OpenDeleteCategoryDialog) => action.payload),
     switchMap((payload: Category) => {
-      if (this.categoryDeleteDialog) {
+      if (this.categoryDeleteDialog)
         this.categoryDeleteDialog.close();
-      }
       this.categoryDeleteDialog = this.dialog.open(DeleteCategoryComponent);
       this.store.dispatch(new SelectCategory(payload))
       return empty()
@@ -97,9 +96,8 @@ export class CategoryEffects {
     ofType(CategoryActionTypes.CLOSE_DELETE_CATEGORY_DIALOG),
     map((action: CloseDeleteCategoryDialog) => action),
     switchMap(() => {
-      if (this.categoryDeleteDialog) {
+      if (this.categoryDeleteDialog)
         this.categoryDeleteDialog.close();
-      }
       return empty()
     })
   )

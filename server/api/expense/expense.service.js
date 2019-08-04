@@ -1,8 +1,10 @@
 const Expense = require('./expense.schema')
 
-this.setBudget = (budget) => {
-  let _budget = new Expense(budget)
-  return _budget.save()
+const Promise = require('promise')
+
+this.create = category => {
+  let _category = new Expense(category)
+  return _category.save()
 }
 
 this.find = (query = {}) => {
@@ -17,3 +19,15 @@ this.findOneById = id => {
   var query = { _id: id };
   return Expense.findOne(query)
 };
+
+this.update = (id, expense) => {
+  let promise = new Promise(async (rs, rj) => {
+    try {
+      let result = await (Expense.findOneAndUpdate({ _id: id }, { $set: expense }, { new: true, useFindAndModify: false }))
+      return rs(result)
+    } catch (err) {
+      return rj(err)
+    }
+  })
+  return promise
+}
