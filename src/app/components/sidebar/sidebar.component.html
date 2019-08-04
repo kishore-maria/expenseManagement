@@ -1,8 +1,12 @@
-<mat-list class="sidebar">
-  <mat-list-item class="sidebar__item">
-    <p mat-line> Dashboard </p>
-  </mat-list-item>
-  <mat-list-item class="sidebar__item">
-    <p mat-line> Settings </p>
-  </mat-list-item>
-</mat-list>
+<mat-sidenav-container class="example-container">
+  <mat-sidenav-content>
+    <mat-list class="sidebar">
+      <mat-list-item class="sidebar__item" [ngClass]="{'active': currentUrl === ''}" (click)="navigateTo()">
+        <p mat-line> Dashboard </p>
+      </mat-list-item>
+      <mat-list-item class="sidebar__item" [ngClass]="{'active': currentUrl === 'setting'}" (click)="navigateTo('setting')">
+        <p mat-line> Settings </p>
+      </mat-list-item>
+    </mat-list>
+  </mat-sidenav-content>
+</mat-sidenav-container>

@@ -4,15 +4,19 @@
   position: relative;
   overflow: hidden;
 }
+
 .setting {
   font-family: $font;
   color: $black;
+
   &-container {
     padding-left: 18px;
     padding-right: 12px;
   }
+
   overflow: hidden;
 }
+
 .setting-detail {
   display: flex;
   justify-content: space-between;
@@ -20,6 +24,7 @@
   min-height: calc(100vh - 0px);
   // padding: 67px 0 0;
 }
+
 .setting-container {
   padding-top: 30px;
   padding-left: 20%;
@@ -33,12 +38,14 @@
   -o-transition: all 1s cubic-bezier(0.18, 0.89, 0.32, 1.28);
   transition: all 1s cubic-bezier(0.18, 0.89, 0.32, 1.28);
 }
+
 .setting-find {
   font-weight: 500;
   font-size: 18px;
   line-height: 22px;
   color: #848484;
 }
+
 .setting-my-campaings {
   color: $green;
   padding-left: 0;
@@ -46,9 +53,11 @@
   font-size: 18px;
   line-height: 22px;
 }
+
 .setting-buttons {
   margin-top: 39px;
   margin-bottom: 53px;
+
   button.action-btn {
     background-color: $green;
     outline: none;
@@ -62,6 +71,7 @@
     letter-spacing: 0.06em;
     color: $white;
   }
+
   &__buttons {
     padding-right: 0;
     padding-left: 0;
@@ -70,22 +80,27 @@
     width: 100%;
     box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.16);
   }
+
   &_center {
     text-align: center;
   }
 }
+
 .inputs {
   padding: 10px;
   position: relative;
+
   div {
     position: relative;
     width: 15%;
     float: left;
     display: block;
+
     input {
       position: relative;
       top: 6px;
     }
+
     label {
       position: relative;
       top: 7px;
@@ -99,5 +114,66 @@
 }
 
 .action-btn {
-    width: 10%;
+  width: 10%;
+}
+
+.card_style {
+  position: relative;
+  padding-left: 1%;
+}
+
+.progress__svg {
+  transform: rotate(-90deg);
+}
+
+.progress__meter,
+.progress__value {
+  fill: none;
+}
+
+.progress__meter {
+  stroke: #ccc;
+}
+
+.progress__value {
+  stroke: #4CAF50;
+  -webkit-transition: all 1s cubic-bezier(0.18, 0.89, 0.32, 1.28);
+  -moz-transition: all 1s cubic-bezier(0.18, 0.89, 0.32, 1.28);
+  -o-transition: all 1s cubic-bezier(0.18, 0.89, 0.32, 1.28);
+  transition: all 1s cubic-bezier(0.18, 0.89, 0.32, 1.28);
+}
+
+.mat-card {
+  display: flex !important;
+
+  div {
+    display: block;
+    position: relative;
+    margin: 28px 0 0 0;
+  }
+
+  label {
+    display: block;
+    width: 100%;
+    text-align: center;
+  }
+
+  .percentage_style {
+    position: absolute;
+    width: auto !important;
+    top: 50%;
+    left: 15%;
+    z-index: 99;
+  }
+
+  .heading {
+    font-weight: bold;
+  }
+
+  .overall {
+    position: absolute;
+    top: 5%;
+    text-align: left;
+    margin-bottom: 30px;
+  }
 }

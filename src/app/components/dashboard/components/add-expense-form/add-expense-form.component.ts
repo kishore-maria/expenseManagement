@@ -2,7 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { AppState, getCategories, getExpense } from 'src/app/store/app.states';
-import { AddExpense, SelectExpenseSuccess, UpdateExpense } from 'src/app/store/actions/expense.action';
+import { AddExpense, SelectExpenseSuccess, UpdateExpense, CloseAddExpenseDialog } from 'src/app/store/actions/expense.action';
 import { MessageService } from 'src/app/services/message.service';
 import { Expense } from 'src/app/models/expense.model';
 import { GetCategories } from 'src/app/store/actions/category.action';
@@ -67,9 +67,7 @@ export class AddExpenseFormComponent implements OnInit, OnDestroy {
   }
 
   onSubmit() {
-    if (!this.expense)
-      return this.messageService.showError("Please enter the value(s)")
-    if (this.expense._id)
+    if (this.expense && this.expense._id)
       this.update()
     else
       this.create()
@@ -104,6 +102,10 @@ export class AddExpenseFormComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.subscriptions.map(subscription => subscription.unsubscribe())
+  }
+
+  close() {
+    this.store.dispatch(new CloseAddExpenseDialog)
   }
 
 }
