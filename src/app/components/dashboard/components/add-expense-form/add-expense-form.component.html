@@ -31,14 +31,10 @@
 
   <div class="col-lg-12">
     <div class="row">
-      <div class="col-lg-4">
+      <div class="col-lg-6">
         <button mat-raised-button class="action-btn" color="primary" (click)="newExpense()"> New </button>
       </div>
-      <div class="col-lg-4">
-        <button mat-raised-button *ngIf="expense && expense._id" class="action-btn" (click)="delete(customer)"> Delete
-        </button>
-      </div>
-      <div class="col-lg-4">
+      <div class="col-lg-6">
         <button mat-raised-button *ngIf="!expense" class="action-btn" type="submit" color="primary" (click)="create()">
           Save </button>
         <button mat-raised-button *ngIf="expense && expense._id" class="action-btn" type="submit" color="primary"
