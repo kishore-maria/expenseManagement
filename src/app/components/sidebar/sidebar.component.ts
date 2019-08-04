@@ -19,8 +19,8 @@ export class SidebarComponent implements OnInit, OnDestroy {
   constructor(public store: Store<AppState>, public router: Router) { }
 
   ngOnInit() {
-    if (this.router.url === '/')
-      this.store.dispatch(new NavigateToSuccess(''))
+    if (this.router.url === '/dashboard')
+      this.store.dispatch(new NavigateToSuccess('dashboard'))
     else
       this.store.dispatch(new NavigateToSuccess('setting'))
     let sideBarState: Observable<any> = this.store.select(getPageUrl)
