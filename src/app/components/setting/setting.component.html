@@ -31,31 +31,12 @@
             </div>
           </div>
         </div>
-        <div class="row">
+        <div class="row" *ngIf="categories.length > 0">
           <div class="col-2 list">
             <app-categories-list></app-categories-list>
           </div>
         </div>
       </div>
-      <!-- <div class='item-header'>
-          <div class='name'>CAMPAIGN NAME</div>
-          <div class='date-created'>DATE CREATED</div>
-          <div class='duration'>CAMPAIGN DURATION</div>
-          <div class='status'>STATUS</div>
-          <div class='actions'> </div>
-        </div>
-
-        <div class='item'  (window:scroll)="onWindowScroll($event)">
-          <div *ngFor="let item of campaignList"> -->
-      <!-- <app-campaign-item [item]="item" (campaignStat)="campaignInfo($event)">
-            </app-campaign-item> -->
-      <!-- </div>
-            </div> -->
-
-      <!-- <div class="setting-container col-lg-12 col-md-12 col-sm-12">
-        <div class="row justify-content-center inputs">
-        </div>
-      </div> -->
     </div>
   </div>
 </div>

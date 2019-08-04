@@ -1,0 +1,45 @@
+<div class="card" (keydown.enter)="onSubmit(expense)">
+  <form [formGroup]="expenseAddForm">
+
+    <mat-form-field>
+      <!-- <input matInput type="text" placeholder="Category name" formControlName="category" required /> -->
+      <mat-label>Select category</mat-label>
+      <mat-select formControlName="category">
+        <mat-option *ngFor="let category of categories" [value]="category.name">
+          {{category.name}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput type="text" placeholder="name" formControlName="name" />
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput type="number" placeholder="Amount" formControlName="amount" required />
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput [matDatepicker]="picker1" placeholder="Angular forms" formControlName="date">
+      <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+      <mat-datepicker #picker1></mat-datepicker>
+    </mat-form-field>
+  </form>
+
+  <div class="col-lg-12">
+    <div class="row">
+      <div class="col-lg-4">
+        <button mat-raised-button class="action-btn" color="primary" (click)="newExpense()"> New </button>
+      </div>
+      <div class="col-lg-4">
+        <button mat-raised-button *ngIf="expense && expense._id" class="action-btn" (click)="delete(customer)"> Delete </button>
+      </div>
+      <div class="col-lg-4">
+        <button mat-raised-button *ngIf="!expense" class="action-btn" type="submit" color="primary" (click)="create()"> Save </button>
+        <button mat-raised-button *ngIf="expense && expense._id" class="action-btn" type="submit" color="primary" (click)="update()"> Update </button>
+      </div>
+
+    </div>
+  </div>
+
+</div>

@@ -16,6 +16,8 @@ module.exports = (app) => {
 
 this.setBudget = async (req, res) => {
   let budget = req.body
+  if (!budget.budget)
+    return res.status(400).send("Enter the budget.");
   try {
     let existBudget = await (BudgetService.findOne())
     if (existBudget)

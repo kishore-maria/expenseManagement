@@ -1,6 +1,7 @@
 export interface Expense {
-    category: String,
-    itemName: String,
-    cost: Number,
-    date: Date,
+    _id?: String;
+    category: String;
+    name: String;
+    amount: Number;
+    date: Date;
 }

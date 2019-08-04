@@ -18,6 +18,8 @@ module.exports = (app) => {
 
 this.createCategory = async (req, res) => {
   let category = req.body
+  if (!category.name)
+    return res.status(400).send("Enter category name.");
   try {
     let existCategory = await(CategoryService.findOne({name: category.name}))
     if (existCategory)
