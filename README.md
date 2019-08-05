@@ -8,6 +8,8 @@ Run `npm i` for install node packages which are support to our project.
 
 ## Local environment
 
+First go to the root directory using `cd <directory_name>`.
+
 Run `npm start` for builds and serves your app, rebuilding on file changes.
 
 Run `npm run serve` for start the server.js file which is used to start the express and mongo service.
