@@ -12,6 +12,8 @@ First go to the root directory using `cd <directory_name>`.
 
 Run `npm start` for builds and serves your app, rebuilding on file changes.
 
+Kindly recommend you to use node version above 8.
+
 Run `npm run serve` for start the server.js file which is used to start the express and mongo service.
 
 We have to run above two commands at the same time using two command line windows. 
